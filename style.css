@@ -1,0 +1,1239 @@
+/* ============================================
+   FONTS
+   ============================================ */
+
+@font-face {
+  font-family: "TOMMY";
+  src: url("fonts/MadeTommy-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TOMMY";
+  src: url("fonts/MadeTommy-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TOMMY";
+  src: url("fonts/MadeTommy-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "WINKLE";
+  src: url("fonts/Winkle-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: "MILKY";
+  src: url("fonts/CheeseMilky.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+/* ============================================
+   Sidequest Studio — Stylesheet
+   ============================================ */
+
+:root {
+  --black: #0d0d0d;
+  --cream: #f2f0ea;
+  --white: #ffffff;
+  --gray-text: #9a9a95;
+  --gray-text-dark: #5b5b57;
+  --border-light: rgba(255, 255, 255, 0.14);
+  --border-dark: rgba(13, 13, 13, 0.12);
+  --font-body: "Space Grotesk", sans-serif;
+  --font-script: "Permanent Marker", cursive;
+  --max-width: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--black);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============ HEADER ============ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 150px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 56px;
+  background: var(--black);
+  color: var(--white);
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  font-size: 0.95rem;
+  font-family: "TOMMY";
+  font-weight: 400;
+}
+
+.nav-left {
+  justify-content: flex-end;
+  padding-right: 25px;
+}
+
+.nav-right {
+  justify-content: flex-start;
+  padding-left: 25px;
+}
+
+.nav-left a,
+.nav-right a {
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.nav-left a:hover,
+.nav-right a:hover {
+  opacity: 1;
+}
+
+/* Logo */
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 70px;
+  line-height: 0;
+}
+
+.logo img {
+  width: 200px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
+  margin-top: 25px;
+}
+
+/* Mobile hamburger */
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--white);
+}
+
+/* Mobile menu */
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: var(--black);
+  color: var(--white);
+  padding: 0 56px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.mobile-menu a {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 1rem;
+}
+
+.mobile-menu.open {
+  max-height: 400px;
+  padding: 8px 56px 20px;
+}
+
+/* ============ HERO ============ */
+
+.hero {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding: 110px 24px 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 42px;
+}
+
+.hero-heading {
+  font-family: "TOMMY";
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.25;
+  max-width: 900px;
+  margin: 0;
+}
+
+.btn-outline {
+  border: 1px solid var(--white);
+  border-radius: 999px;
+  padding: 14px 32px;
+  font-size: 0.95rem;
+  font-family: "TOMMY";
+  font-weight: 400;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* ============ MARQUEE ============ */
+
+.marquee {
+  background: var(--cream);
+  color: var(--black);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  overflow: hidden;
+  padding: 18px 0;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  font-family: "MILKY";
+  font-weight: 400;
+  font-size: 1.5rem;
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+  will-change: transform;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============ SECTION SHARED ============ */
+
+section {
+  padding: 100px 24px;
+}
+
+.eyebrow {
+  text-align: center;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  color: var(--cream);
+  margin: -20px 0 30px 0;
+  font-family: "TOMMY";
+  font-weight: 700;
+}
+
+.eyebrow-dark {
+  color: var(--black);
+}
+
+.script-heading {
+  
+  text-align: center;
+  font-size: 3rem;
+  margin: 0 0 40px;
+  letter-spacing: 0.01em;
+}
+
+.script-heading.small {
+  font-family: "WINKLE";
+  font-weight: 400;
+  font-size: 2.5rem;
+  text-align: left;
+  margin: 22px 0 12px;
+}
+
+/* ============ ABOUT ============ */
+
+.about {
+  background: var(--black);
+  color: var(--white);
+  max-width: none;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 250px;
+}
+
+/* Keep the marquee below the Polaroids */
+.about + .marquee {
+  margin-top: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.about-copy {
+  max-width: 780px;
+  margin: 0 auto 60px;
+  text-align: center;
+  line-height: 1.7;
+  color: var(--white);
+  font-size: 0.98rem;
+  font-family: "TOMMY";
+  font-weight: 400;
+}
+
+.about-copy strong {
+  color: var(--white);
+  font-family: "TOMMY";
+  font-weight: 700;
+}
+
+/* ============================================
+   POLAROID FOUNDER CARDS
+   ============================================ */
+
+.founder-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 70px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.founder-card {
+  width: 380px;
+  margin: 0;
+  padding: 14px 14px 25px;
+  background: #ffffff;
+  border: none;
+  border-radius: 1px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Slightly imperfect Polaroid angles */
+
+.polaroid-left {
+  transform: rotate(-3deg);
+  position: relative;
+  z-index: 1;
+}
+
+.polaroid-right {
+  transform: rotate(3deg);
+  position: relative;
+  z-index: 1;
+}
+/* Hover */
+
+.polaroid-left:hover,
+.polaroid-right:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ============================================
+   PHOTO AREA
+   ============================================ */
+
+.image-placeholder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #e2e0d8;
+
+  border: none;
+  border-radius: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.image-placeholder:hover {
+  background: #d9d6cc;
+}
+
+
+/* Uploaded photo */
+
+.image-placeholder img.uploaded-preview {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+
+/* Hide placeholder once image exists */
+
+.image-placeholder.has-image .placeholder-content {
+  display: none;
+}
+
+
+/* ============================================
+   POLAROID CAPTION
+   ============================================ */
+
+.founder-card figcaption {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2px;
+
+  margin-top: 18px;
+}
+
+
+/* Handwritten name */
+
+.founder-name {
+  font-family: "WINKLE";
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 1;
+
+  color: var(--black);
+
+  transform: rotate(-1deg);
+}
+
+
+/* Role */
+
+.founder-role {
+  font-family: "TOMMY";
+  font-weight: 400;
+
+  font-size: 0.78rem;
+
+  color: #666;
+  text-align: center;
+
+  margin-top: 5px;
+  letter-spacing: 0.02em;
+}
+
+/* ============ PROCESS ============ */
+
+.process {
+  background: var(--cream);
+  color: var(--black);
+  max-width: none;
+  margin: 0;
+  padding: 100px 24px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.process-card {
+  background: var(--white);
+  border: 1px solid rgba(13, 13, 13, 0.25);
+  border-radius: 20px;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* Black icon area */
+.process-icon {
+  background: var(--black);
+  height: 333px;
+  width: 100%;
+  border-radius: 19px 19px 19px 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px;
+}
+
+/* Your uploaded icon */
+.process-icon img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
+/* Text area */
+.process-card h3 {
+  font-family: "WINKLE";
+  font-weight: 400;
+  padding: 28px 32px 0;
+  margin: 0 0 10px;
+}
+
+.process-card p {
+  font-family: "TOMMY";
+  font-weight: 400;
+  padding: 0 32px 30px;
+  margin: 0;
+  color: var(--black);
+  line-height: 1.45;
+  font-size: 0.93rem;
+}
+
+/* ============ SERVICES ============ */
+
+.services {
+  background: var(--black);
+  color: var(--white);
+  padding: 0;
+}
+
+.services-intro {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 90px 32px 70px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.services-intro p {
+  font-family: "TOMMY";
+  font-weight: 400;
+  max-width: 420px;
+  line-height: 1.6;
+  color: #c9c9c4;
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+.services-intro .align-right {
+  text-align: right;
+  margin-left: auto;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-row {
+  min-height: 34vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+  color: var(--white);
+  border-top: 1px solid var(--border-light);
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.service-row:last-child {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.service-name {
+  font-size: clamp(1.8rem, 5vw, 3.4rem);
+  font-family: "TOMMY";
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: transform 0.5s ease;
+}
+
+.service-row.is-active {
+  background: var(--white);
+  color: var(--black);
+}
+
+.service-row.is-active .service-name {
+  transform: scale(1.03);
+}
+
+/* ============ ARTWORK ============ */
+
+/* ============ ARTWORK ============ */
+
+.artwork {
+  background: var(--black);
+  padding: 90px 24px;
+}
+
+.artwork-grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+/* Top row: 2 wide cards (span 3 columns each) */
+.artwork-placeholder:nth-child(1),
+.artwork-placeholder:nth-child(2) {
+  grid-column: span 3;
+  aspect-ratio: 16 / 9;
+}
+
+/* Bottom row: 3 cards (span 2 columns each) */
+.artwork-placeholder:nth-child(3),
+.artwork-placeholder:nth-child(4),
+.artwork-placeholder:nth-child(5) {
+  grid-column: span 2;
+  aspect-ratio: 1 / 1;
+}
+
+.artwork-placeholder {
+  position: relative;
+  background: #e5e5e5;
+  border: none;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.artwork-placeholder:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+}
+
+.artwork-placeholder .image-upload-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.artwork-placeholder .placeholder-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.artwork-placeholder .placeholder-label {
+  font-family: "TOMMY";
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  color: #0d0d0d;
+}
+
+.artwork-placeholder.has-image .placeholder-content {
+  display: none;
+}
+
+.artwork-placeholder img.uploaded-preview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 28px;
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 900px) {
+  .artwork-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .artwork-placeholder:nth-child(1),
+  .artwork-placeholder:nth-child(2),
+  .artwork-placeholder:nth-child(3),
+  .artwork-placeholder:nth-child(4),
+  .artwork-placeholder:nth-child(5) {
+    grid-column: span 1;
+    aspect-ratio: 16 / 10;
+  }
+}
+/* ============ WHY SIDEQUEST ============ */
+
+.why {
+  background: var(--black);
+  color: var(--white);
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.why-copy {
+  font-family: "TOMMY";
+  font-weight: 400px;
+  max-width: 760px;
+  margin: 0 auto;
+  line-height: 1.75;
+  color: white;
+  font-size: 1rem;
+}
+
+.why-title {
+  font-size: 3rem;
+  font-family: "WINKLE";
+  font-weight: 400;
+
+}
+
+/* ============ FOOTER ============ */
+
+.site-footer {
+  background: var(--cream);
+  padding: 80px 24px 30px;
+}
+
+.footer-top {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.footer-logo {
+  display: inline-flex;
+}
+
+.footer-tagline {
+  margin: 16px 0 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.footer-columns {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col h4 {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-col a {
+  font-size: 0.88rem;
+  color: var(--gray-text-dark);
+  transition: color 0.2s ease;
+}
+
+.footer-col a:hover {
+  color: var(--black);
+}
+
+.footer-col-center {
+  align-items: center;
+  text-align: center;
+}
+
+.footer-col-right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.social-row {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.social-row a {
+  color: var(--black);
+}
+
+.footer-divider {
+  max-width: var(--max-width);
+  margin: 50px auto 20px;
+  border-top: 1px solid var(--border-dark);
+}
+
+.footer-bottom {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--gray-text-dark);
+}
+
+/* ============ RESPONSIVE ============ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+#about,
+#process,
+#why-sidequest,
+#services {
+  scroll-margin-top: 150px;
+}
+
+@media (max-width: 900px) {
+
+  .founder-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .founder-card {
+    width: min(380px, 100%);
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .artwork-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .artwork-placeholder.large {
+    grid-column: span 2;
+  }
+
+  .artwork-placeholder.small {
+    grid-column: span 1;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-col-center,
+  .footer-col-right {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 720px) {
+
+  .site-header {
+    height: 90px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+  }
+
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 70px;
+  }
+
+  .logo img {
+    width: 135px;
+    height: 100px;
+    margin-top: 15px;
+  }
+
+  .nav-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+  }
+
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+
+  .mobile-menu {
+    display: flex;
+  }
+
+  .site-header {
+    padding: 8px 24px;
+  }
+
+  .hero {
+    padding: 80px 20px 90px;
+  }
+
+  section {
+    padding: 70px 20px;
+  }
+
+  .services-intro {
+    padding: 60px 20px 40px;
+  }
+
+  .services-intro .align-right {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .footer-bottom {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+
+/* ============================================
+   MOBILE OPTIMIZATION
+   Does NOT change desktop
+   ============================================ */
+
+@media (max-width: 720px) {
+
+  /* HEADER */
+  .site-header {
+    height: 90px;
+    padding: 0 20px;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .logo {
+    height: 70px;
+  }
+
+  .logo img {
+    width: 135px;
+    height: 100px;
+    margin-top: 15px;
+  }
+
+  .nav-toggle {
+    justify-self: end;
+  }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    padding: 0 20px;
+  }
+
+  .mobile-menu.open {
+    padding: 8px 20px 20px;
+  }
+
+  .mobile-menu a {
+    font-family: "TOMMY";
+    font-size: 0.95rem;
+    padding: 16px 0;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100svh - 90px);
+    padding: 80px 20px 90px;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  .hero-heading {
+    font-size: clamp(2rem, 9vw, 3rem);
+    line-height: 1.2;
+    max-width: 100%;
+  }
+
+  .btn-outline {
+    padding: 13px 28px;
+    font-size: 0.9rem;
+  }
+
+  /* MARQUEE */
+  .marquee {
+    padding: 14px 0;
+  }
+
+  .marquee-track {
+    font-size: 1.15rem;
+    animation-duration: 16s;
+  }
+
+  /* GENERAL SECTIONS */
+  section {
+    padding: 70px 20px;
+  }
+
+  .eyebrow {
+    font-size: 1rem;
+    margin: -5px 0 24px;
+  }
+
+  .script-heading {
+    font-size: 2.2rem;
+    line-height: 1.15;
+    margin-bottom: 30px;
+  }
+
+  /* ABOUT */
+  .about {
+    padding-bottom: 100px;
+  }
+
+  .about-copy {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    margin-bottom: 50px;
+  }
+
+  /* FOUNDERS */
+  .founder-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 45px;
+    width: 100%;
+  }
+
+  .founder-card {
+    width: min(340px, 90vw);
+    padding: 10px 10px 22px;
+  }
+
+  .founder-name {
+    font-size: 2rem;
+  }
+
+  .founder-role {
+    font-size: 0.7rem;
+  }
+
+  /* PROCESS */
+  .process {
+    padding: 70px 20px;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .process-card {
+    border-radius: 18px;
+  }
+
+  .process-icon {
+    height: 260px;
+    padding: 35px;
+  }
+
+  .process-icon img {
+    width: 70%;
+    height: 70%;
+  }
+
+  .process-card h3 {
+    font-size: 2.1rem;
+    padding: 22px 24px 0;
+  }
+
+  .process-card p {
+    padding: 0 24px 26px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  /* SERVICES */
+  .services-intro {
+    padding: 60px 20px 40px;
+    gap: 20px;
+  }
+
+  .services-intro p {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .service-row {
+    min-height: 180px;
+    padding: 30px 20px;
+  }
+
+  .service-name {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+    text-align: center;
+  }
+
+  /* ARTWORK */
+  .artwork {
+    padding: 60px 20px;
+  }
+
+  .artwork-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .artwork-placeholder:nth-child(1),
+  .artwork-placeholder:nth-child(2),
+  .artwork-placeholder:nth-child(3),
+  .artwork-placeholder:nth-child(4),
+  .artwork-placeholder:nth-child(5) {
+    grid-column: span 1;
+    aspect-ratio: 16 / 10;
+  }
+
+  /* WHY SIDEQUEST */
+  .why {
+    padding: 70px 20px 20px;
+  }
+
+  .why-title {
+    font-size: 2.3rem;
+    margin: 0 0 25px;
+  }
+
+  .why-copy {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  .site-footer {
+    padding: 60px 20px 25px;
+  }
+
+  .footer-top {
+    margin-bottom: 45px;
+  }
+
+  .footer-logo img {
+    width: 150px;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .footer-tagline {
+    font-size: 0.82rem;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-col,
+  .footer-col-center,
+  .footer-col-right {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-col h4 {
+    font-size: 0.8rem;
+  }
+
+  .footer-col a {
+    font-size: 0.82rem;
+  }
+
+  .footer-divider {
+    margin: 40px auto 18px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.72rem;
+    gap: 5px;
+  }
+}
