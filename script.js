@@ -8,19 +8,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".nav-toggle");
   const mobileMenu = document.querySelector(".mobile-menu");
 
-  if (navToggle && mobileMenu) {
-    navToggle.addEventListener("click", () => {
-      const isOpen = mobileMenu.classList.toggle("open");
-      navToggle.setAttribute("aria-expanded", String(isOpen));
-    });
+ if (navToggle && mobileMenu) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  });
 
-    mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-        navToggle.setAttribute("aria-expanded", "false");
-      });
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const target = document.querySelector(link.getAttribute("href"));
+      if (!target) return;
+
+      // Close menu first
+      mobileMenu.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+
+      // Wait for the menu to close, then scroll
+      setTimeout(() => {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 320);
     });
-  }
+  });
+}
 
   /* ---------- Services list scroll highlight ----------
      As the user scrolls, whichever service row is nearest the
