@@ -135,17 +135,53 @@ img {
   justify-content: flex-start;
   padding-left: 25px;
 }
-
+/* Nav Bar Hover */
 .nav-left a,
 .nav-right a {
+  position: relative;
   opacity: 1;
-  transition: transform 0.2s ease;
+  display: inline-block;
+  padding-bottom: 10px;
 }
 
-.nav-left a:hover,
-.nav-right a:hover {
-  opacity: 1;
-  transform: scale(1.05);
+/* Top line */
+.nav-left a::before,
+.nav-right a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Bottom shorter line */
+.nav-left a::after,
+.nav-right a::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  bottom: 1px;
+  width: 72%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1) 0.08s;
+}
+
+.nav-left a:hover::before,
+.nav-right a:hover::before {
+  transform: scaleX(1);
+}
+
+.nav-left a:hover::after,
+.nav-right a:hover::after {
+  transform: scaleX(1);
 }
 /* Logo */
 
@@ -163,7 +199,7 @@ img {
   height: 150px;
   object-fit: contain;
   display: block;
-  margin-top: 25px;
+  margin-top: 18px;
 }
 
 .logo img {
@@ -248,21 +284,51 @@ img {
   letter-spacing: 0.01em;
 }
 
+/* BUTTON HOVER */
 .btn-outline {
-  border: 1px solid var(--white);
-  border-radius: 999px;
+  position: relative;
+  display: inline-block;
+  border: none;
+  border-radius: 0;
   padding: 14px 32px;
+  background: transparent;
   font-size: 0.95rem;
-  font-family: "TOMMY";
+  font-family: "TOMMY", sans-serif;
   font-weight: 400;
-  color: var(--white);
-  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+  color: var(--white, #fff);
+  cursor: pointer;
+  z-index: 1;
 }
 
-.btn-outline:hover {
-  background: var(--white);
-  color: var(--black);
-  transform: scale(1.05);
+.btn-outline::before {
+  content: "";
+  position: absolute;
+  /* Reduced offsets and dimensions to pull the circle tight to the text */
+  top: -8px;
+  left: -12px;
+  width: calc(100% + 24px);
+  height: calc(100% + 16px);
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 90'%3E%3Cfilter id='chalk'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='2.5' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Cg filter='url(%23chalk)'%3E%3Cpath d='M 180 15 C 230 18 255 35 250 55 C 242 75 180 85 100 83 C 35 81 5 65 10 45 C 16 22 75 10 160 8 C 220 7 252 20 250 38 C 248 55 200 70 130 72 C 70 74 42 62 50 48' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round' opacity='0.9'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+
+  /* Scaled hover state down to fit closely */
+  transform: scale(0.85) rotate(-3deg);
+  opacity: 0;
+
+  transition:
+    transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    opacity 0.25s ease;
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+.btn-outline:hover::before {
+  transform: scale(1.05) rotate(-3deg);
+  opacity: 1;
 }
 
 /* ============ MARQUEE ============ */
