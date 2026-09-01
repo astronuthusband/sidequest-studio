@@ -74,7 +74,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background: var(--cream);
+  background: var(--white);
   color: var(--black);
   -webkit-font-smoothing: antialiased;
 }
@@ -138,15 +138,15 @@ img {
 
 .nav-left a,
 .nav-right a {
-  opacity: 0.9;
-  transition: opacity 0.2s ease;
+  opacity: 1;
+  transition: transform 0.2s ease;
 }
 
 .nav-left a:hover,
 .nav-right a:hover {
   opacity: 1;
+  transform: scale(1.05);
 }
-
 /* Logo */
 
 .logo {
@@ -164,6 +164,14 @@ img {
   object-fit: contain;
   display: block;
   margin-top: 25px;
+}
+
+.logo img {
+  transition: transform 0.2s ease;
+}
+
+.logo:hover img {
+  transform: scale(1.05);
 }
 
 /* Mobile hamburger */
@@ -228,9 +236,16 @@ img {
   font-family: "TOMMY";
   font-size: clamp(2.1rem, 5vw, 3.6rem);
   font-weight: 500;
+  color: #ffffff;
   line-height: 1.25;
   max-width: 900px;
   margin: 0;
+  transition: transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.hero-heading:hover {
+  transform: translateY(-5px) scale(1.015);
+  letter-spacing: 0.01em;
 }
 
 .btn-outline {
@@ -240,18 +255,20 @@ img {
   font-size: 0.95rem;
   font-family: "TOMMY";
   font-weight: 400;
-  transition: background 0.25s ease, color 0.25s ease;
+  color: var(--white);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
 }
 
 .btn-outline:hover {
   background: var(--white);
   color: var(--black);
+  transform: scale(1.05);
 }
 
 /* ============ MARQUEE ============ */
 
 .marquee {
-  background: var(--cream);
+  background: var(--white);
   color: var(--black);
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
@@ -295,7 +312,7 @@ section {
   text-align: center;
   font-size: 1.3rem;
   letter-spacing: 0.08em;
-  color: var(--cream);
+  color: var(--white);
   margin: -20px 0 30px 0;
   font-family: "TOMMY";
   font-weight: 700;
@@ -306,16 +323,20 @@ section {
 }
 
 .script-heading {
-  
+  font-family: "WINKLE";
+  font-weight: 400;
   text-align: center;
   font-size: 3rem;
   margin: 0 0 40px;
   letter-spacing: 0.01em;
+  transition: transform 0.3s ease;
+}
+
+.script-heading:hover {
+  transform: translateY(-5px) rotate(-1deg) scale(1.02);
 }
 
 .script-heading.small {
-  font-family: "WINKLE";
-  font-weight: 400;
   font-size: 2.5rem;
   text-align: left;
   margin: 22px 0 12px;
@@ -338,6 +359,11 @@ section {
   margin-top: 0;
   position: relative;
   z-index: 10;
+}
+
+.about + .marquee {
+  margin-bottom: 40px;
+  border-bottom: 80px solid var(--black);
 }
 
 .about-copy {
@@ -374,7 +400,7 @@ section {
   width: 380px;
   margin: 0;
   padding: 14px 14px 25px;
-  background: #ffffff;
+  background: var(--white);
   border: none;
   border-radius: 1px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
@@ -507,7 +533,7 @@ section {
 /* ============ PROCESS ============ */
 
 .process {
-  background: var(--cream);
+  background: var(--white);
   color: var(--black);
   width: 100%;
   max-width: none;
@@ -599,7 +625,7 @@ section {
   font-weight: 400;
   max-width: 420px;
   line-height: 1.6;
-  color: #c9c9c4;
+  color: white;
   font-size: 0.98rem;
   margin: 0;
 }
@@ -632,7 +658,7 @@ section {
 .service-name {
   font-size: clamp(1.8rem, 5vw, 3.4rem);
   font-family: "TOMMY";
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.01em;
   transition: transform 0.5s ease;
 }
@@ -680,7 +706,7 @@ section {
 
 .artwork-placeholder {
   position: relative;
-  background: #e5e5e5;
+  background: var(--white);
   border: none;
   border-radius: 28px;
   display: flex;
@@ -772,13 +798,17 @@ section {
   font-size: 3rem;
   font-family: "WINKLE";
   font-weight: 400;
+  transition: transform 0.3s ease;
+}
 
+.why-title:hover {
+  transform: translateY(-5px) rotate(-1deg) scale(1.02);
 }
 
 /* ============ FOOTER ============ */
 
 .site-footer {
-  background: var(--cream);
+  background: var(--white);
   padding: 80px 24px 30px;
 }
 
