@@ -108,6 +108,15 @@ if (cursor && window.matchMedia('(pointer: fine)').matches) {
     mouseY = e.clientY;
   });
 
+  
+document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+});
+
+document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+});
+
   function loop() {
     x += (mouseX - x) * 0.5;
     y += (mouseY - y) * 0.5;

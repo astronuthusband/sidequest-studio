@@ -1385,7 +1385,8 @@ section {
   height: 45px;
   pointer-events: none;
   z-index: 9999;
-  transition: transform 0.15s ease;
+  opacity: 1;
+  transition: transform 0.15s ease, opacity 0.15s ease;
   will-change: transform;
 }
 
