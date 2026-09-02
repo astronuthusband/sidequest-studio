@@ -96,3 +96,31 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+const cursor = document.getElementById('customCursor');
+
+if (cursor && window.matchMedia('(pointer: fine)').matches) {
+  let mouseX = 0, mouseY = 0;
+  let x = 0, y = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function loop() {
+    x += (mouseX - x) * 0.5;
+    y += (mouseY - y) * 0.5;
+    cursor.style.left = `${x - 18}px`;
+    cursor.style.top = `${y - 18}px`;
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  document.querySelectorAll('a, button, .nav-toggle').forEach((el) => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('is-hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('is-hover'));
+  });
+} else if (cursor) {
+  cursor.style.display = 'none';
+}
