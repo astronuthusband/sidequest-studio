@@ -1409,3 +1409,27 @@ section {
     cursor: auto !important;
   }
 }
+
+
+
+/*HEADER TYPING EFFECT*/
+
+.text-type__content {
+  white-space: pre-line;
+}
+
+.text-type__cursor {
+  display: inline-block;
+  margin-left: 4px;
+  animation: textTypeBlink 0.8s infinite;
+}
+
+@keyframes textTypeBlink {
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
+}

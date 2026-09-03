@@ -133,3 +133,55 @@ document.addEventListener('mouseenter', () => {
 } else if (cursor) {
   cursor.style.display = 'none';
 }
+
+
+// ============================================
+// Hero typing effect
+// ============================================
+
+const heroText = document.querySelector(".text-type");
+
+if (heroText) {
+  const content = heroText.querySelector(".text-type__content");
+  const cursor = heroText.querySelector(".text-type__cursor");
+
+  const line1 = "We take your brand seriously.";
+  const line2 = "Ourselves? Not so much.";
+
+  let line = 1;
+  let charIndex = 0;
+
+  function typeHero() {
+    if (line === 1) {
+      // Type first line
+      content.textContent = line1.substring(0, charIndex);
+      charIndex++;
+
+      if (charIndex <= line1.length) {
+        setTimeout(typeHero, 45);
+      } else {
+        // Move to second line
+        line = 2;
+        charIndex = 0;
+
+        setTimeout(typeHero, 400);
+      }
+
+    } else {
+      // Type second line
+      content.innerHTML =
+        line1 + "<br>" + line2.substring(0, charIndex);
+
+      charIndex++;
+
+      if (charIndex <= line2.length) {
+        setTimeout(typeHero, 45);
+      } else {
+        // Typing finished — hide cursor
+        cursor.style.display = "none";
+      }
+    }
+  }
+
+  typeHero();
+}
