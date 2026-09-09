@@ -253,42 +253,39 @@ p {
     font-size: 16px;
 }
 
-/* ==========================================================================
-   05. HEADER / NAVBAR
-   Matches the visual language of the main SideQuest website.
-   
-   IMPORTANT:
-   - Fixed to the top
-   - Black background
-   - Centered logo
-   - Logo stays INSIDE the navbar
-   - Left WhatsApp button
-   - Right consultation button
-   - No oversized logo
-   ========================================================================== */
+/* ============================================
+   HEADER / NAVBAR
+   Matches Main Site Navbar
+   ============================================ */
 
 .site-header {
     position: relative;
+    top: auto;
     z-index: 50;
-    height: 100px;
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 56px;
+
     background-color: #0d0d0d;
     color: #ffffff;
 }
 
-/* ---------- Header inner layout ---------- */
-
 .header-inner {
     width: 100%;
-    max-width: var(--container-max);
     height: 100%;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-/* ---------- Left side ---------- */
+/* ---------- LEFT ---------- */
 
 .header-left {
     justify-self: start;
@@ -297,6 +294,60 @@ p {
     height: 100%;
 }
 
+/* ---------- CENTER LOGO ---------- */
+
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 200px;
+    height: 70px;
+
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.site-header .header-logo-img {
+    width: 200px;
+    height: 150px;
+
+    max-width: none;
+    max-height: none;
+
+    object-fit: contain;
+    display: block;
+
+    margin-top: 18px;
+    padding: 0;
+
+    filter: brightness(2);
+
+    transition: transform 0.2s ease;
+}
+
+.site-header .logo:hover .header-logo-img {
+    transform: scale(1.05);
+}
+
+/* ---------- RIGHT ---------- */
+
+.header-right {
+    justify-self: end;
+
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+}
+
+/* ---------- BUTTONS ---------- */
+
 .header-whatsapp {
     display: inline-flex;
     align-items: center;
@@ -304,129 +355,88 @@ p {
     white-space: nowrap;
 }
 
-/* ---------- Center logo ---------- */
-
-.logo {
-    justify-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    height: 100%;
-    line-height: 0;
-}
-
-/*
-   This is intentionally scoped to the HEADER.
-
-   Do NOT use ".logo img" globally because other parts
-   of the landing page may use their own logo/image classes.
-*/
-
-.site-header .header-logo-img {
-    display: block;
-    width: 300px;
-    height: 100px;
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
-    margin: 0;
-    padding: 0;
-    filter: brightness(2);
-    transform: scale(1.35);
-    transition: transform 0.2s ease;
-}
-
-.site-header .logo:hover .header-logo-img {
-    transform: scale(1.38);
-}
-
-/* ---------- Right side ---------- */
-
-.header-right {
-    justify-self: end;
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
-/* ---------- Header buttons ---------- */
-
 .header-inner .btn-sm {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     min-height: 38px;
     padding: 0.6rem 1.1rem;
+
     font-size: 0.7rem;
     line-height: 1;
 }
 
-/* ==========================================================================
-   06. HEADER / TABLET
-   ========================================================================== */
 
-@media (max-width: 768px) {
+/* ============================================
+   MOBILE
+   Matches Main Site Navbar
+   ============================================ */
+
+@media (max-width: 720px) {
+
     .site-header {
-        height: 82px;
+        height: 90px;
+        padding: 8px 24px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .header-inner {
-        padding: 0 1.25rem;
-    }
-
-    .site-header .header-logo-img {
-        width: 290px;
-        height: 78px;
-        transform: scale(1.1);
-    }
-
-    .header-whatsapp {
-        width: 36px;
-        height: 36px;
+        width: 100%;
+        height: 100%;
         padding: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: relative;
     }
 
-    .header-whatsapp span:last-child {
-        display: none;
-    }
+    /* ---------- CENTER LOGO ---------- */
 
-    .header-inner .btn-sm {
-        min-height: 36px;
-        padding: 0.5rem 0.8rem;
-        font-size: 0.65rem;
-    }
+ .logo {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 300px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* ==========================================================================
-   07. HEADER / SMALL MOBILE
-   ========================================================================== */
-
-@media (max-width: 480px) {
-    .site-header {
-        height: 76px;
-    }
-
-    .header-inner {
-        padding: 0 0.9rem;
-    }
-
     .site-header .header-logo-img {
-        width: 235px;
-        height: 70px;
-        transform: scale(1.08);
+        width: 300px;
+        height: 200px;
+
+        max-width: none;
+        max-height: none;
+
+        object-fit: contain;
+
+        margin-top: 35px;
+
+        transform: none;
     }
 
-    .header-whatsapp {
-        width: 34px;
-        height: 34px;
+    .site-header .logo:hover .header-logo-img {
+        transform: none;
     }
 
-    .header-inner .btn-sm {
-        min-height: 34px;
-        padding: 0.45rem 0.65rem;
-        font-size: 0.6rem;
-    }
+/* ---------- HIDE NAVBAR BUTTONS ---------- */
+
+.header-left,
+.header-right {
+    display: none;
+}
 }
 
 /* ==========================================================================
