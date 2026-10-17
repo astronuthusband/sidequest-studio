@@ -574,7 +574,7 @@ p {
 
 .marquee-wrap {
     width: 100%;
-    background-color: var(--color-surface-lowest);
+    background-color: white;
     border-bottom: 1px solid var(--color-border-hairline);
     padding: 0.9rem 0;
     overflow: hidden;
@@ -594,16 +594,18 @@ p {
     gap: 2rem;
     padding-right: 2rem;
     flex-shrink: 0;
-    color: #d4d4d4;
-    font-weight: 700;
+    color: black;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     white-space: nowrap;
+    font-family: "MILKY";
+    font-weight: 400;
+    font-size: 1rem;
 }
 
 .marquee-group .dot {
-    color: var(--color-border-muted);
+    color: black;
 }
 
 .marquee-track:hover {
